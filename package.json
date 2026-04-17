@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.5.3",
-    "vite": "^7.0.5",
-    "threepipe": "^0.2.0",
     "@threepipe/plugin-tweakpane": "^0.8.4",
-    "@threepipe/webgi-plugins": "^0.5.10"
+    "@threepipe/webgi-plugins": "^0.5.10",
+    "threepipe": "^0.2.0",
+    "typescript": "^5.5.3",
+    "vite": "^7.0.5"
+  },
+  "dependencies": {
+    "three": "https://pkg.threepipe.org/dep/three/-/v0.160.1006/package.tgz"
   }
 }
