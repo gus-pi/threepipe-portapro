@@ -1,4 +1,4 @@
-:root {
+/* :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
     color-scheme: light dark;
@@ -15,13 +15,57 @@
         color: #213547;
         background-color: #ffffff;
     }
-}
+} */
 
 body {
+    font-family: 'Montserrat', sans-serif;
     overflow: hidden;
     margin: 0;
     padding: 0;
 }
+.nav--bar {
+    position: absolute;
+    display: flex;
+    align-content: space-between;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 30px;
+    z-index: 10;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.section {
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    background: transparent;
+    color: black;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.h1 {
+    margin-left: 5%;
+    font-size: 10rem;
+    line-height: 8rem;
+}
+
+.button--navbar {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+    margin-right: 40px;
+}
+
 #threepipe-canvas {
     width: 100%;
     height: 100%;
@@ -30,30 +74,4 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-}
-
-.logos {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-}
-.logos a {
-    text-decoration: none;
-}
-
-.logo {
-    height: 2em;
-    padding: 0.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo.threepipe:hover {
-    filter: drop-shadow(0 0 2em #f87315aa);
-}
-.logo.vite:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-    filter: drop-shadow(0 0 2em #3178c6aa);
 }

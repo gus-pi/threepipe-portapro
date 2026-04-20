@@ -23,6 +23,7 @@ async function init() {
         canvas: document.getElementById('threepipe-canvas') as HTMLCanvasElement,
         // Enable/Disable MSAA
         msaa: false,
+        rgbm: false,
         // Set the render scale automatically based on the device pixel ratio
         renderScale: 'auto',
         // Enable/Disable tone mapping
@@ -50,7 +51,7 @@ async function init() {
     ]);
 
     // Add a plugin with a debug UI for tweaking parameters
-    const ui = viewer.addPluginSync(new TweakpaneUiPlugin(true));
+    // const ui = viewer.addPluginSync(new TweakpaneUiPlugin(true));
 
     // Load an environment map(optional). One is already set in the model loaded below.
     // await viewer.setEnvironmentMap('https://threejs.org/examples/textures/equirectangular/venice_sunset_1k.hdr', {});
@@ -68,15 +69,16 @@ async function init() {
     if (bloom) {
         bloom.pass!.threshold = 2;
     }
+    viewer.scene.background = null;
     viewer.scene.envMapIntensity = 0.5; // Set the environment map intensity
 
     // Add some debug UI elements for tweaking parameters
-    ui.setupPlugins(SSAAPlugin);
-    ui.setupPlugins(SSReflectionPlugin);
-    ui.setupPlugins(BloomPlugin);
-    viewer.scene.uiConfig = {
-        expanded: true,
-    };
+    // ui.setupPlugins(SSAAPlugin);
+    // ui.setupPlugins(SSReflectionPlugin);
+    // ui.setupPlugins(BloomPlugin);
+    // viewer.scene.uiConfig = {
+    //     expanded: true,
+    // };
 
     console.log(result);
 }
