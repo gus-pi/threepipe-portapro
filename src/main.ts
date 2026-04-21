@@ -9,13 +9,18 @@ import {
     SSAOPlugin,
     ThreeViewer,
 } from 'threepipe';
-import { TweakpaneUiPlugin } from '@threepipe/plugin-tweakpane';
+// import { TweakpaneUiPlugin } from '@threepipe/plugin-tweakpane';
 import {
     BloomPlugin,
     DepthOfFieldPlugin,
     SSReflectionPlugin,
     TemporalAAPlugin,
 } from '@threepipe/webgi-plugins';
+
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
 
 async function init() {
     const viewer = new ThreeViewer({
@@ -37,6 +42,10 @@ async function init() {
             SSAAPlugin,
         ],
     });
+
+    const camera = viewer.scene.mainCamera;
+    const position = camera.position;
+    const target = camera.target;
 
     // Add post-processing plugins from threepipe and webgi.dev
     viewer.addPlugins([
@@ -82,6 +91,28 @@ async function init() {
     // };
 
     console.log(result);
+    function setupScrollAnimation() {
+        const tl = gsap.timeline();
+
+        //First section
+        tl.to(position, { x: 5, duration: 4, onUpdate });
+
+        let needsUpdate = true;
+
+        function onUpdate() {
+            needsUpdate = true;
+            viewer.renderManager.resetShadows();
+        }
+
+        viewer.addEventListener('prevFrame', () => {
+            if (needsUpdate) {
+                camera.setDirty();
+                needsUpdate = false;
+            }
+        });
+    }
+
+    setupScrollAnimation();
 }
 
 init();
