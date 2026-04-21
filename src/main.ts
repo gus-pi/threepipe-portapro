@@ -70,6 +70,7 @@ async function init() {
         bloom.pass!.threshold = 2;
     }
     viewer.scene.background = null;
+    viewer.renderManager.screenPass.clipBackgroundForce = true;
     viewer.scene.envMapIntensity = 0.5; // Set the environment map intensity
 
     // Add some debug UI elements for tweaking parameters
