@@ -92,10 +92,48 @@ async function init() {
 
     console.log(result);
     function setupScrollAnimation() {
-        const tl = gsap.timeline();
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.container', // wrapper of all sections
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1,
+            },
+        });
 
-        //First section
-        tl.to(position, { x: 5, duration: 4, onUpdate });
+        tl.to(position, {
+            x: 2.4,
+            y: 0.43,
+            z: -0.48,
+
+            onUpdate,
+        })
+
+            .to('.section--one--container', {
+                xPercent: '-150',
+                opacity: 0,
+            })
+            .to(target, {
+                x: -0.31,
+                y: 0.14,
+                z: -0.42,
+            })
+
+            // LAST SECTION
+
+            .to(position, {
+                x: 0,
+                y: 0.5,
+                z: -4.1,
+
+                onUpdate,
+            })
+
+            .to(target, {
+                x: 0,
+                y: 0.5,
+                z: -0.56,
+            });
 
         let needsUpdate = true;
 
